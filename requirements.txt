@@ -1,0 +1,15 @@
+flask==3.1.1
+flask-cors==5.0.1
+requests==2.32.3
+beautifulsoup4==4.13.4
+lxml==5.4.0
+APScheduler==3.11.0
+gunicorn==23.0.0
+
+# Database (Supabase PostgreSQL)
+psycopg2-binary==2.9.10
+python-dotenv==1.0.1
+
+# Advanced scraping (anti-bot bypass)
+curl-cffi==0.7.4
+playwright==1.49.0

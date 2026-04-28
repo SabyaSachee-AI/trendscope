@@ -1,0 +1,29 @@
+# Render.com Blueprint - One-click deployment
+# Reference: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: trendscope
+    runtime: python
+    region: singapore  # Closest to Bangladesh for fast access
+    plan: free
+    buildCommand: |
+      pip install -r requirements.txt && \
+      python -m playwright install chromium && \
+      python -m playwright install-deps chromium || true
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 600 --access-logfile - --error-logfile -
+    envVars:
+      - key: DATABASE_URL
+        sync: false  # User must set manually in Render dashboard
+      - key: CRON_SECRET
+        generateValue: true  # Render auto-generates a random secret
+      - key: DATA_RETENTION_DAYS
+        value: "180"
+      - key: LOG_RETENTION_DAYS
+        value: "30"
+      - key: JOB_RETENTION_DAYS
+        value: "7"
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+    healthCheckPath: /api/status
+    autoDeploy: true
