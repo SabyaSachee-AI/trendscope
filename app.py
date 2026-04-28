@@ -374,6 +374,13 @@ def serve_static(path):
         return send_from_directory(app.static_folder, path)
     return send_from_directory(app.static_folder, 'index.html')
 
+@app.route('/debug-files')
+def debug_files():
+    import os
+    # এই ফোল্ডারের ভেতর কী কী ফাইল আছে তা দেখাবে
+    files = os.listdir(app.static_folder)
+    return str(files)
+
 # ─── Initialize on startup ────────────────────────────────────────────────────
 
 init_defaults()
