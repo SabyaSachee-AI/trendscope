@@ -1,0 +1,45 @@
+# Environment variables (NEVER commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# Local data file (only used in dev mode)
+data.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Playwright browsers (auto-installed by Render)
+ms-playwright/
+.playwright/
+
+# Node (frontend dev artifacts — not needed for Python deployment)
+node_modules/
+dist/
+src/
+package.json
+package-lock.json
+vite.config.ts
+tsconfig.json
+index.html
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs/
